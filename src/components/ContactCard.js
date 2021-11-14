@@ -3,6 +3,7 @@ import image from "../images/images.png";
 
 
 const ContactCard = (props) => {
+    // console.log(props);
     const {id, name, email} = props.contact;
     
     return ( 

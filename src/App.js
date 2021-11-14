@@ -7,11 +7,20 @@ import Header from './components/Header';
 function App() {
 
   const [contacts, setContacts] = useState([]);
+
+  const addContactHandler = (contact) => {
+    console.log(contact);
+    // setContacts(contacts => [...contacts, contact]);
+    // setContacts(contact);
+    contacts.push(contact);
+    // setContacts(contact);
+    // setContacts([contact]);
+  }
     
   return ( 
     <div>
       <Header />
-      <AddContact/>
+      <AddContact addContactHandler={addContactHandler}/>
       <ContactList contacts={contacts} />
     </div>
   );

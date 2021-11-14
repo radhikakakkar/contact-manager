@@ -1,46 +1,45 @@
 import { useState } from "react";
+import React from 'react';
+// import ReactDOM from 'react-dom';
+// import props from 'prop-types';
 
+const AddContact = (props) => {
 
-// const AddContact = () => {
+    const [state, setState] = useState({
+        name:  "",
+        email: ""
+    });
+    const add=(e)=>{
 
-
-class AddContact extends React.Component{
-
-
-    constructor(props) {
-
-        super(props);
-        this.state = {
-            name:"",
-            email:""
-        }
-        
-    }
-    // const [state, setState] = useState({
-    //     name:  " ",
-    //     email:  " "
-    // });
-
-
-
-    add=(e)=>{
         e.preventDefault();
-        console.log(state);
+        const name = document.getElementById('main-form').name.value;
+        const email = document.getElementById('main-form').email.value;
 
+        setState({name:name, email:email});
+        // console.log(state);
     }
 
-    render() {
+    console.log(state);
+    props.addContactHandler(state);
+    
+    // function empty(e){
+    //     e.preventDefault;
+    //     setState({name:"", email:""}); //empty fields on submit
+    // }
+        
+
     return ( 
         <div>
-            <form onSubmit={add}>
+            <form id="main-form" onSubmit={add}>
                 <label htmlFor="name">Name: </label>
                 <input 
                 id="name" 
                 type="text" 
                 name="name"
                 placeholder="Enter Your Name.." 
-                onChange={(e) => setState( {name:e.target.value}) }
-                value={state.name}
+                
+                // onChange={(e) => setState( {name:e.target.value}) }
+                // value={state.name}
                 required>
 
                 </input>
@@ -54,19 +53,20 @@ class AddContact extends React.Component{
                 type="text" 
                 name="email"
                 placeholder="Enter Your Email.."  
-                onChange={(e) => setState( {email:e.target.value}) }
-                value={state.email}
+                // onChange={(e) => setState( {email:e.target.value}) }
+                // value={state.email}
                 required>
 
                 </input>
                 <br />
                 <br />
-                <button className="add">Add</button>
+                <button className="add" type="submit">Add</button>
+
             </form>
         </div>
      );
 }
-}
+
 export default AddContact;
 
 
